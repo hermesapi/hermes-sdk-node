@@ -10,6 +10,18 @@ export type InvestmentType =
 
 export type InvestmentStatus = 'ACTIVE' | 'PENDING' | 'TOTAL_WITHDRAWAL'
 
+/**
+ * Extra information related to Previdencia
+ */
+export type InvestmentMetadata = {
+  /** Type of tax applied to the investment */
+  taxRegime?: string
+  /** Proposal number */
+  proposalNumber?: string
+  /** Process number */
+  processNumber?: string
+}
+
 export type InvestmentTransaction = {
   /** Primary identifier of the transacion */
   id: string
@@ -85,6 +97,8 @@ export type Investment = {
   lastTwelveMonthsRate?: number
   /** Current status of the investment */
   status?: InvestmentStatus
+  /** Metadata related to Previdencia */
+  metadata?: InvestmentMetadata
   /** Transactions made related to the investment, like adquisitions (BUY) or withdrawals (SELL). */
   transactions?: InvestmentTransaction[]
 }
